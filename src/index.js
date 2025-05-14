@@ -11,8 +11,8 @@ const main = async () => {
   moment.locale('es')
   moment.tz.setDefault('America/Lima')
 
-  const serverApp = await server.listen(config.server.port)
-  handleMessage(`[Api Server] running in port ${config.server.port}`, filePath)
+  const serverApp = await server.listen(8002)
+  handleMessage(`[Api Server] running in port ${8002}`, filePath)
 }
 process.on('uncaughtException', error => console.log(error))
 process.on('unhandledRejection', error => console.log(error))
