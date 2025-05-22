@@ -1,18 +1,27 @@
 'use strict'
 
 const { goalDB } = require('../db')
+const { saveFile } = require('utils/files/save')
 
 const listGoals = async params => {
   const goals = await goalDB.list(params)
   return goals
 }
 
-const createGoal = async (body, loggedUser) => {
+const createGoal = async (body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/goals')
+    body.image = route
+  }
   const goal = await goalDB.create(body)
   return goal
 }
 
-const updateGoal = async (goalId, body, loggedUser) => {
+const updateGoal = async (goalId, body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/goals')
+    body.image = route
+  }
   const goal = await goalDB.update(goalId, body)
   return goal
 }

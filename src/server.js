@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express')
+const path = require('path')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
@@ -12,6 +13,9 @@ const routesOpen = require('./routes/open')
 const { authHandler } = require('./auth')
 
 const server = express()
+
+// ✅ Sirve archivos estáticos desde /files
+server.use('/files', express.static(path.join(__dirname, '..', 'files')));
 
 server.use(
   fileUpload({

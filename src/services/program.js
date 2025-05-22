@@ -1,5 +1,6 @@
 'use strict'
 
+const { saveFile } = require('utils/files/save')
 const { programDB } = require('../db')
 
 const listPrograms = async params => {
@@ -7,12 +8,28 @@ const listPrograms = async params => {
   return programs
 }
 
-const createProgram = async (body, loggedUser) => {
+const createProgram = async (body, image, logo, loggedUser) => {
+  if (image) {
+    const route = await saveFile(image, '/files/programs')
+    body.image = route
+  }
+  if (logo) {
+    const route = await saveFile(logo, '/files/programs')
+    body.logo = route
+  }
   const program = await programDB.create(body)
   return program
 }
 
-const updateProgram = async (programId, body, loggedUser) => {
+const updateProgram = async (programId, body, image, logo, loggedUser) => {
+  if (image) {
+    const route = await saveFile(image, '/files/programs')
+    body.image = route
+  }
+  if (logo) {
+    const route = await saveFile(logo, '/files/programs')
+    body.logo = route
+  }
   const program = await programDB.update(programId, body)
   return program
 }

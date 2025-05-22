@@ -9,9 +9,10 @@ const listPrograms = async (req, res) => {
 
 const createProgram = async (req, res, next) => {
   const body = JSON.parse(req.body.data)
-  const file = req.files && req.files.image
+  const image = req.files && req.files.image
+  const logo = req.files && req.files.logo
   try {
-    const program = await service.createProgram(body, file, req.user)
+    const program = await service.createProgram(body, image, logo, req.user)
     return res.status(201).json(program)
   } catch (error) {
     next(error)
@@ -21,12 +22,14 @@ const createProgram = async (req, res, next) => {
 const updateProgram = async (req, res, next) => {
   const programId = req.params.id
   const body = JSON.parse(req.body.data)
-  const file = req.files && req.files.image
+  const image = req.files && req.files.image
+  const logo = req.files && req.files.logo
   try {
     const program = await service.updateProgram(
       programId,
       body,
-      file,
+      image,
+      logo,
       req.user
     )
     return res.status(200).json(program)

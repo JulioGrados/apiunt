@@ -1,18 +1,27 @@
 'use strict'
 
 const { initiativeDB } = require('../db')
+const { saveFile } = require('utils/files/save')
 
 const listInitiatives = async params => {
   const initiatives = await initiativeDB.list(params)
   return initiatives
 }
 
-const createInitiative = async (body, loggedUser) => {
+const createInitiative = async (body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/initiatives')
+    body.backImage = route
+  }
   const initiative = await initiativeDB.create(body)
   return initiative
 }
 
-const updateInitiative = async (initiativeId, body, loggedUser) => {
+const updateInitiative = async (initiativeId, body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/initiatives')
+    body.backImage = route
+  }
   const initiative = await initiativeDB.update(initiativeId, body)
   return initiative
 }

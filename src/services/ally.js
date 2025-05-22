@@ -1,5 +1,6 @@
 'use strict'
 
+const { saveFile } = require('utils/files/save')
 const { allyDB } = require('../db')
 
 const listAllys = async params => {
@@ -7,12 +8,20 @@ const listAllys = async params => {
   return allys
 }
 
-const createAlly = async (body, loggedUser) => {
+const createAlly = async (body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/allys')
+    body.image = route
+  }
   const ally = await allyDB.create(body)
   return ally
 }
 
-const updateAlly = async (allyId, body, loggedUser) => {
+const updateAlly = async (allyId, body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/allys')
+    body.image = route
+  }
   const ally = await allyDB.update(allyId, body)
   return ally
 }
