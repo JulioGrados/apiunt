@@ -1,18 +1,27 @@
 'use strict'
 
 const { portfolioDB } = require('../db')
+const { saveFile } = require('utils/files/save')
 
 const listPortfolios = async params => {
   const sagrements = await portfolioDB.list(params)
   return sagrements
 }
 
-const createPortfolio = async (body, loggedUser) => {
+const createPortfolio = async (body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/portfolio')
+    body.image = route
+  }
   const portfolio = await portfolioDB.create(body)
   return portfolio
 }
 
-const updatePortfolio = async (portfolioId, body, loggedUser) => {
+const updatePortfolio = async (portfolioId, body, file, loggedUser) => {
+  if (file) {
+    const route = await saveFile(file, '/files/portfolio')
+    body.image = route
+  }
   const portfolio = await portfolioDB.update(portfolioId, body)
   return portfolio
 }
