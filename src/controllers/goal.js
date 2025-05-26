@@ -7,6 +7,11 @@ const listGoals = async (req, res) => {
   return res.status(200).json(goals)
 }
 
+const listOpenGoals = async (req, res) => {
+  const goals = await service.listGoals(req.query)
+  return res.status(200).json(goals)
+}
+
 const createGoal = async (req, res, next) => {
   const body = JSON.parse(req.body.data)
   const file = req.files && req.files.image
@@ -72,6 +77,7 @@ const countDocuments = async (req, res) => {
 module.exports = {
   countDocuments,
   listGoals,
+  listOpenGoals,
   createGoal,
   updateGoal,
   detailGoal,

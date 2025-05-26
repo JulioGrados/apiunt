@@ -8,6 +8,12 @@ const listInitiatives = async (req, res) => {
   return res.status(200).json(initiatives)
 }
 
+const listOpenInitiatives = async (req, res) => {
+  const initiatives = await service.listInitiatives(req.query)
+  console.log('initiatives', initiatives)
+  return res.status(200).json(initiatives)
+}
+
 const createInitiative = async (req, res, next) => {
   const body = JSON.parse(req.body.data)
   const file = req.files && req.files.image
@@ -73,6 +79,7 @@ const countDocuments = async (req, res) => {
 module.exports = {
   countDocuments,
   listInitiatives,
+  listOpenInitiatives,
   createInitiative,
   updateInitiative,
   detailInitiative,

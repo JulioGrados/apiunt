@@ -7,6 +7,11 @@ const listAllys = async (req, res) => {
   return res.status(200).json(allys)
 }
 
+const listOpenAllys = async (req, res) => {
+  const allys = await service.listAllys(req.query)
+  return res.status(200).json(allys)
+}
+
 const createAlly = async (req, res, next) => {
   const body = JSON.parse(req.body.data)
   const file = req.files && req.files.image
@@ -72,6 +77,7 @@ const countDocuments = async (req, res) => {
 module.exports = {
   countDocuments,
   listAllys,
+  listOpenAllys,
   createAlly,
   updateAlly,
   detailAlly,

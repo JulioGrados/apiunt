@@ -7,6 +7,11 @@ const listPrograms = async (req, res) => {
   return res.status(200).json(programs)
 }
 
+const listOpenPrograms = async (req, res) => {
+  const programs = await service.listPrograms(req.query)
+  return res.status(200).json(programs)
+}
+
 const createProgram = async (req, res, next) => {
   const body = JSON.parse(req.body.data)
   const image = req.files && req.files.image
@@ -75,6 +80,7 @@ const countDocuments = async (req, res) => {
 module.exports = {
   countDocuments,
   listPrograms,
+  listOpenPrograms,
   createProgram,
   updateProgram,
   detailProgram,
