@@ -5,6 +5,6 @@ const config = require('config')
 
 const { models, db } = dbModule(config.db)
 
-db.connect(process.env.NODE_ENV = 'test')
+db.connect(process.env.NODE_ENV)
 
 module.exports = models
