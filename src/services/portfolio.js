@@ -10,7 +10,7 @@ const listPortfolios = async params => {
 
 const createPortfolio = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/portfolio')
+    const route = await saveFile(file, '/media/portfolio')
     body.image = route
   }
   const portfolio = await portfolioDB.create(body)
@@ -19,7 +19,7 @@ const createPortfolio = async (body, file, loggedUser) => {
 
 const updatePortfolio = async (portfolioId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/portfolio')
+    const route = await saveFile(file, '/media/portfolio')
     body.image = route
   }
   const portfolio = await portfolioDB.update(portfolioId, body)
