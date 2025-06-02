@@ -10,7 +10,7 @@ const listInitiatives = async params => {
 
 const createInitiative = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/initiatives')
+    const route = await saveFile(file, '/media/initiatives')
     body.backImage = route
   }
   const initiative = await initiativeDB.create(body)
@@ -19,7 +19,7 @@ const createInitiative = async (body, file, loggedUser) => {
 
 const updateInitiative = async (initiativeId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/initiatives')
+    const route = await saveFile(file, '/media/initiatives')
     body.backImage = route
   }
   const initiative = await initiativeDB.update(initiativeId, body)
