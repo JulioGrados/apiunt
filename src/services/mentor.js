@@ -10,7 +10,7 @@ const listMentors = async params => {
 
 const createMentor = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/mentor')
+    const route = await saveFile(file, '/media/mentor')
     body.photo = route
   }
   const mentor = await mentorDB.create(body)
@@ -19,7 +19,7 @@ const createMentor = async (body, file, loggedUser) => {
 
 const updateMentor = async (mentorId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/mentor')
+    const route = await saveFile(file, '/media/mentor')
     body.photo = route
   }
   const mentor = await mentorDB.update(mentorId, body)
