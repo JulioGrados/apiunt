@@ -10,7 +10,7 @@ const listTeams = async params => {
 
 const createTeam = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/team')
+    const route = await saveFile(file, '/media/team')
     body.photo = route
   }
   const team = await teamDB.create(body)
@@ -19,7 +19,7 @@ const createTeam = async (body, file, loggedUser) => {
 
 const updateTeam = async (teamId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/team')
+    const route = await saveFile(file, '/media/team')
     body.photo = route
   }
   const team = await teamDB.update(teamId, body)
