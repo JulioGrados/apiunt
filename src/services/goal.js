@@ -10,7 +10,7 @@ const listGoals = async params => {
 
 const createGoal = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/goals')
+    const route = await saveFile(file, '/media/goals')
     body.image = route
   }
   const goal = await goalDB.create(body)
@@ -19,7 +19,7 @@ const createGoal = async (body, file, loggedUser) => {
 
 const updateGoal = async (goalId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/goals')
+    const route = await saveFile(file, '/media/goals')
     body.image = route
   }
   const goal = await goalDB.update(goalId, body)
