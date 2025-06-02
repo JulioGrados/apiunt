@@ -10,11 +10,11 @@ const listPrograms = async params => {
 
 const createProgram = async (body, image, logo, loggedUser) => {
   if (image) {
-    const route = await saveFile(image, '/files/programs')
+    const route = await saveFile(image, '/media/programs')
     body.image = route
   }
   if (logo) {
-    const route = await saveFile(logo, '/files/programs')
+    const route = await saveFile(logo, '/media/programs')
     body.logo = route
   }
   const program = await programDB.create(body)
@@ -23,11 +23,11 @@ const createProgram = async (body, image, logo, loggedUser) => {
 
 const updateProgram = async (programId, body, image, logo, loggedUser) => {
   if (image) {
-    const route = await saveFile(image, '/files/programs')
+    const route = await saveFile(image, '/media/programs')
     body.image = route
   }
   if (logo) {
-    const route = await saveFile(logo, '/files/programs')
+    const route = await saveFile(logo, '/media/programs')
     body.logo = route
   }
   const program = await programDB.update(programId, body)
