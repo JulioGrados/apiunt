@@ -15,9 +15,8 @@ const { authHandler } = require('./auth')
 const server = express()
 
 // ✅ Sirve archivos estáticos desde /files
-const url = express.static(path.join(__dirname, '..', 'media'))
-console.log('url', url)
 server.use('/media', express.static(path.join(__dirname, '..', 'media')));
+server.use('/files', express.static(path.join(__dirname, '..', 'files')));
 
 server.use(
   fileUpload({

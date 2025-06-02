@@ -12,7 +12,7 @@ const createUpload = async (body, file, loggedUser) => {
     console.log('body', body)
     console.log('file', file)
   if (file) {
-    const route = await saveFile(file, '/files')
+    const route = await saveFile(file, '/media/upload')
     body.file = route
   }
 
