@@ -5,6 +5,10 @@ const config = require('config')
 const { connectionDB } = require('db/lib')
 
 const authHandler = (req, res, next) => {
+  if (req.path.startsWith('/files')) {
+    return next(); // ❗️Salta autenticación para archivos públicos
+  }
+  
   const token =
     req.headers['x-access-token'] || req.body.token || req.query.token
   if (token) {
