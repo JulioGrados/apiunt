@@ -4,9 +4,7 @@ const service = require('../services/user')
 const countriesData = require('utils/functions/countries')
 
 const listUsers = async (req, res) => {
-  console.log('req.query', req.query)
   const users = await service.listUsers(req.query)
-  console.log('users', users)
   return res.status(200).json(users)
 }
 

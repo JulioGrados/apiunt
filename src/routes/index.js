@@ -12,6 +12,9 @@ const routesQuestion = require('./question')
 const routesUpload = require('./upload')
 const routesMentor = require('./mentor')
 const routesTeam = require('./team')
+const routesEvaluation = require('./evaluation')
+const routesInterview = require('./interview')
+const routesComment = require('./comment')
 
 module.exports = server => {
   server.use('/api', routesPage)
@@ -26,4 +29,7 @@ module.exports = server => {
   server.use('/api', routesUpload)
   server.use('/api', routesMentor)
   server.use('/api', routesTeam)
+  server.use('/api', routesEvaluation)
+  server.use('/api', routesInterview)
+  server.use('/api', routesComment)
 }

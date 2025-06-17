@@ -26,10 +26,10 @@
   "dependencies": {
     "axios": "^1.4.0",
     "body-parser": "^1.19.0",
-    "config": "https://JulioGrados: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@github.com/JulioGrados/configunt.git",
+    "config": "https://JulioGrados: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@github.com/JulioGrados/configunt.git",
     "cors": "^2.8.5",
     "custom-error-instance": "^2.1.2",
-    "db": "https://JulioGrados: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@github.com/JulioGrados/dbunt.git",
+    "db": "https://JulioGrados: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@github.com/JulioGrados/dbunt.git",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.1.6",
@@ -40,7 +40,7 @@
     "morgan": "^1.9.1",
     "slug": "^2.1.1",
     "uniqid": "^5.2.0",
-    "utils": "https://JulioGrados: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@github.com/JulioGrados/utilsunt.git",
+    "utils": "https://JulioGrados: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@github.com/JulioGrados/utilsunt.git",
     "xlsx": "^0.18.5"
   }
 }
