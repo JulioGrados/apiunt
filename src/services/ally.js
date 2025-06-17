@@ -10,7 +10,7 @@ const listAllys = async params => {
 
 const createAlly = async (body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/allys')
+    const route = await saveFile(file, '/media/allys')
     body.image = route
   }
   const ally = await allyDB.create(body)
@@ -19,7 +19,7 @@ const createAlly = async (body, file, loggedUser) => {
 
 const updateAlly = async (allyId, body, file, loggedUser) => {
   if (file) {
-    const route = await saveFile(file, '/files/allys')
+    const route = await saveFile(file, '/media/allys')
     body.image = route
   }
   const ally = await allyDB.update(allyId, body)
