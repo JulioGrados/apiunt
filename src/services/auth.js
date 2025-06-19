@@ -63,6 +63,7 @@ const singupUser = async (data) => {
   data.password = data.password ? generateHash(data.password) : undefined
   const createUser = await userDB.create({
     ...data,
+    username: data.email,
     names: data.firstName + ' ' + data.lastName,
     password: data.password,
     rol: 'emprendedor'
